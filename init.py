@@ -5,13 +5,14 @@ import sys,os, re
 import pandas as pd
 from numpy import *
 from pandas import *
-from pandas import IndexSlice as idx
+from pandas import IndexSlice as ixs
 # get_ipython().magic(u'matplotlib inline')
 import seaborn as sns
 # import Quandl
 
 # import statsmodels.api as sm
-import statsmodels.formula.api as sm
+import statsmodels.formula.api as smf
+import statsmodels.api as sm
 
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')

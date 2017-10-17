@@ -44,7 +44,7 @@ def compress_df(df):
         df[col] = to_numeric(df[col], downcast='float')
     return df
 
-def pct_format_yaxis(prec=1):
+def pct_format_yaxis(prec=1, ax=None):
     # Set the formatter
     def _to_percent(y, position):
         # Ignore the passed in position. This has the effect of scaling the default
@@ -57,7 +57,9 @@ def pct_format_yaxis(prec=1):
         else:
             return s + '%'
     _pct_formatter = FuncFormatter(_to_percent)
-    plt.gca().yaxis.set_major_formatter(_pct_formatter)
+    if ax is None:
+        ax = plt.gca()
+    ax.yaxis.set_major_formatter(_pct_formatter)
 
 def center_axis(ax, xpos='center', ypos='center'):
     """pos can be center or zero"""
