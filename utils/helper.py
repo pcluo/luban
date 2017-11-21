@@ -14,6 +14,9 @@ def plot_cdf(x, xlim=None):
     if xlim is not None:
         x = x.loc[xlim[0]:xlim[1]]
     x.plot();
+    if xlim is not None:
+        plt.xlim(xlim)
+        
     return x
 
 
@@ -27,11 +30,13 @@ def compound(df, freq='Q'):
 create_decile = lambda x: qcut(x, q=10, labels=False) + 1
 
 
-def plt_style_paper():
+def plt_style_paper(figsize=None):
+    """usually [6,4] is a good size"""
     plt.style.use('classic')
     plt.rcParams['legend.fontsize'] = 11
     plt.rcParams['figure.facecolor'] = 'white'
-    plt.rcParams['figure.figsize'] = [6,4]
+    if figsize is not None:
+        plt.rcParams['figure.figsize'] = figsize
 
 csfont = {'fontname':'Times New Roman'}
 
