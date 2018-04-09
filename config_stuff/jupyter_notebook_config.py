@@ -2,6 +2,7 @@
 
 c = get_config()
 c.NotebookApp.open_browser = False
+c.NotebookManager.notebook_dir = u'/home/cluo/'
 c.NotebookApp.disable_check_xsrf = True
 
 

@@ -1,0 +1,12 @@
+{
+    "display_name": "Research Python",
+    "language": "python",
+    "argv": [
+        "/Users/cluo/anaconda/bin/python",
+        "-m", "ipykernel",
+        "--profile=research",
+        "-f", "{connection_file}"
+    ],
+    "env": {
+    }
+}
