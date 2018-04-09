@@ -16,7 +16,7 @@ def plot_cdf(x, xlim=None):
     x.plot();
     if xlim is not None:
         plt.xlim(xlim)
-        
+
     return x
 
 
@@ -48,6 +48,7 @@ def compress_df(df):
     for col in df.select_dtypes(include=['float']):
         df[col] = to_numeric(df[col], downcast='float')
     return df
+
 
 def pct_format_yaxis(prec=1, ax=None):
     # Set the formatter
@@ -82,3 +83,9 @@ def center_axis(ax, xpos='center', ypos='center'):
         # so that it doesn't look weird
         ax.spines['top'].set_visible(False)
         ax.xaxis.set_ticks_position('bottom')
+
+# def rolling_beta()
+#     d_cov = d_ret.rolling(beta_win, min_periods=0).cov(d_ret.btop)
+#     d_std = d_ret.btop.rolling(beta_win, min_periods=0).var()
+#     d_beta = d_cov.div(d_std, 0).dropna()
+#     return d_beta

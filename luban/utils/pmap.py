@@ -10,6 +10,14 @@ def applyParallel(dfGrouped, func):
     retLst = Parallel(n_jobs=multiprocessing.cpu_count())(delayed(func)(group) for name, group in dfGrouped)
     return pd.concat(retLst)
 
+def applyParallel2(dfGrouped, func, do_concat=False):
+    retLst = Parallel(n_jobs=multiprocessing.cpu_count())(delayed(func)(name, group) for name, group in dfGrouped)
+    if do_concat:
+        return pd.concat(retLst, ignore_index=True)
+    else:
+        return retLst
+
+
 if __name__ == '__main__':
     df = pd.DataFrame({'a': [6, 2, 2], 'b': [4, 5, 6]},index= ['g1', 'g1', 'g2'])
     print('parallel version: ')
