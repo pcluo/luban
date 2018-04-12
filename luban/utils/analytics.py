@@ -22,7 +22,6 @@ def winsorize_df(df, cols, limits=(0.01, 0.01), copy=False):
     return df
 
 
-
 def fama_macbeth(formula, time_label, df, lags=3):
     res = df.groupby(time_label).apply(lambda x: sm.ols(formula=formula,
                                                      data=x).fit())
