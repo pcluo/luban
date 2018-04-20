@@ -26,3 +26,5 @@ import statsmodels.api as sm
 def add_path(path2add):
     if path2add not in sys.path:
         sys.path.append(path2add)
+from builtins import eval
+# eval = builtins.eval

@@ -17,7 +17,17 @@ def applyParallel2(dfGrouped, func, do_concat=False):
     else:
         return retLst
 
+def applyParallel2_uniarg(dfGrouped, func, do_concat=False):
+    retLst = Parallel(n_jobs=multiprocessing.cpu_count())(delayed(func)(group) for name, group in dfGrouped)
+    if do_concat:
+        return pd.concat(retLst, ignore_index=True)
+    else:
+        return retLst
 
+def pmap(func, iterables):
+    retLst = Parallel(n_jobs=multiprocessing.cpu_count())(delayed(func)(item) for item in iterables)
+    return retLst
+    
 if __name__ == '__main__':
     df = pd.DataFrame({'a': [6, 2, 2], 'b': [4, 5, 6]},index= ['g1', 'g1', 'g2'])
     print('parallel version: ')

@@ -10,6 +10,8 @@ How to write gitignore files to include only certain file extensions
 !*.php
 !*/
 
+ln -s ~/Dropbox/my_workspace/luban/config_stuff/flake8 .flake8rc
+
 https://rtyley.github.io/bfg-repo-cleaner/
 
 git reset filename.txt

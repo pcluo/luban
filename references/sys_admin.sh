@@ -3,9 +3,9 @@ ls -lah
 df -h
 du -sh
 du -sh *
-du -sm * | sort -n 
+du -sm * | sort -n
 
-top 
+top
 
 # set timezone
 date
@@ -42,10 +42,10 @@ screen -ls
 
 mongod --shutdown
 
-./start_jupyter_notebook.sh 
+./start_jupyter_notebook.sh
 
 nohup jupyter notebook &
-ecryptfs-mount-private 
+ecryptfs-mount-private
 
 
 sudo service mongod restart

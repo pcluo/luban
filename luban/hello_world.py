@@ -1,10 +1,15 @@
+##
 from luban.init import *
 
-from pandas import *
+# from pandas import *
+
+## %%
 print("hello world!")
 
-
+##
 Series([1,2,3]).plot()
+
+##
 plt.plot([10,2,5])
 Series([1,2,3])
 plt.figure()
