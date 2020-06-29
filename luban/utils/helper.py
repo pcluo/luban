@@ -67,6 +67,48 @@ def pct_format_yaxis(prec=1, ax=None):
         ax = plt.gca()
     ax.yaxis.set_major_formatter(_pct_formatter)
 
+
+def pct_format_xaxis(prec=1, ax=None):
+    # Set the formatter
+    def _to_percent(y, position):
+        # Ignore the passed in position. This has the effect of scaling the default
+        # tick locations.
+        s = '{:.{prec}f}'.format(100 * y, prec=prec)
+
+        # The percent symbol needs escaping in latex
+        if matplotlib.rcParams['text.usetex'] is True:
+            return s + r'$\%$'
+        else:
+            return s + '%'
+    _pct_formatter = FuncFormatter(_to_percent)
+    if ax is None:
+        ax = plt.gca()
+    ax.xaxis.set_major_formatter(_pct_formatter)
+
+
+import matplotlib.ticker as mtick
+fmt = '${x:,.0f}'
+tick_dollar_thousands = mtick.StrMethodFormatter(fmt)
+
+
+def dollar_format_yaxis(prec=1, symbol='$', ax=None):
+    fmt = '%s{x:,.%df}'%(symbol, prec)
+    tick_dollar_thousands = mtick.StrMethodFormatter(fmt)
+
+    if ax is None:
+        ax = plt.gca()
+    ax.yaxis.set_major_formatter(tick_dollar_thousands)
+
+
+def dollar_format_xaxis(prec=1, symbol='$', ax=None):
+    fmt = '%s{x:,.%df}'%(symbol, prec)
+    tick_dollar_thousands = mtick.StrMethodFormatter(fmt)
+
+    if ax is None:
+        ax = plt.gca()
+    ax.xaxis.set_major_formatter(tick_dollar_thousands)
+
+
 def center_axis(ax, xpos='center', ypos='center'):
     """pos can be center or zero"""
     if xpos is not None:
